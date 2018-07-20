@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3d839fccd6045e449866d9dec834cd1c
+timeCreated: 1518663167
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HappySmiley: {fileID: 21300000, guid: 338e0193cfb97b641881b51bd47cba89, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
