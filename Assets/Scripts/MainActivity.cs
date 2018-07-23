@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// app secret bbf46034-a8e1-4059-9552-33247433c855
+
 public class MainActivity : MonoBehaviour
 {
     public GameObject CellPrefab;
