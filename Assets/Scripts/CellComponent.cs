@@ -18,7 +18,7 @@ public class CellComponent : MonoBehaviour
 
         if (longPress || _board.flagMode) // flag the cell or unflag it
         {
-            Debug.Log("Long Press! " + "x: " + row + " - y: " + col);
+            //Debug.Log("Long Press! " + "x: " + row + " - y: " + col);
 
             if (_board.Cells[row, col].State == Cell.STATE.DISCOVERED)
             {
@@ -29,9 +29,9 @@ public class CellComponent : MonoBehaviour
         }
         else
         {
-            Debug.Log("Click! " + "x: " + row + " - y: " + col);
+            //Debug.Log("Click! " + "x: " + row + " - y: " + col);
 
-            if (_board.Cells[row, col].State == Cell.STATE.FLAGGED)
+            if (_board.Cells[row, col].State == Cell.STATE.FLAGGED || _board.Cells[row, col].State == Cell.STATE.DISCOVERED)
             {
                 return;
             }
@@ -46,7 +46,6 @@ public class CellComponent : MonoBehaviour
             {
                 DiscoverCell(row, col);
             }
-
         }
 
         //Debug.Log("Height: " + Board.Instance().Cells[x, y]._cell.GetComponent<RectTransform>().rect.height);
@@ -59,6 +58,7 @@ public class CellComponent : MonoBehaviour
         foreach (KeyValuePair<int, int> item in litsOfIndexes)
         {
             _board.Cells[item.Key, item.Value].State = Cell.STATE.DISCOVERED;
+            _board._gameData.stateCells[item.Key, item.Value] = 2;
 
             yield return null;
             //yield return new WaitForSeconds(.01f);
@@ -74,6 +74,7 @@ public class CellComponent : MonoBehaviour
             if (_board.Cells[item.Key, item.Value].State != Cell.STATE.FLAGGED)
             {
                 _board.Cells[item.Key, item.Value].State = Cell.STATE.DISCOVERED;
+                _board._gameData.stateCells[item.Key, item.Value] = 2;
             }
         }
     }
@@ -90,6 +91,8 @@ public class CellComponent : MonoBehaviour
             }
             _board.nbFlags--;
             _board.Cells[row, col].State = Cell.STATE.COVERED;
+
+            _board._gameData.stateCells[row, col] = 1;
         }
         else
         {
@@ -104,6 +107,8 @@ public class CellComponent : MonoBehaviour
             }
             _board.nbFlags++;
             _board.Cells[row, col].State = Cell.STATE.FLAGGED;
+
+            _board._gameData.stateCells[row, col] = 3;
         }
     }
 
@@ -111,6 +116,8 @@ public class CellComponent : MonoBehaviour
     {
         Board _board = Board.Instance();
         _board.Cells[row, col].State = Cell.STATE.DISCOVERED;
+
+        _board._gameData.stateCells[row, col] = 2;
 
         if (_board.Cells[row, col].Content == Cell.CONTENT.BOMB)
         {

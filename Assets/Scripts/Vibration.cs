@@ -63,10 +63,19 @@ public static class Vibration
 
     private static bool isAndroid()
     {
-#if UNITY_ANDROID && !UNITY_EDITOR
-	return true;
-#else
+        Debug.Log("Device model: " + SystemInfo.deviceModel);
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            return true;
+        }
+
         return false;
-#endif
+
+//#if UNITY_ANDROID && !UNITY_EDITOR
+//	return true;
+//#else
+//        return false;
+//#endif
     }
 }

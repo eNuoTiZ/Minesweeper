@@ -3,39 +3,12 @@ using UnityEngine.UI;
 
 public class LoadOnEnter : StateMachineBehaviour
 {
-    public GameObject Ground;
-    public GameObject Walls;
-    public GameObject Player;
-    public GameObject PickUps;
-
-    private GameObject _ground;
-    private GameObject _walls;
-    private GameObject _player;
-    private GameObject _pickUps;
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // If the particle system already exists then exit the function.
-        //if (_ground != null)
-        //    return;
-
-        // Otherwise instantiate the particles and set up references to their components..
-        //_ground = Instantiate(Ground);
-
-        //_player = Instantiate(Player);
-
-        //_walls = Instantiate(Walls);
-        //_pickUps = Instantiate(PickUps);
-
-        //SceneManager.LoadScene(0);
-
-        Board.Instance().ResizeBoard(Options.Instance.CellRatio, true);
-        //Board.Mono.StartCoroutine(Board.Instance().ResizeBoard(Options.Instance.CellRatio, true));
-
         //Board.Instance().ResizeBoard(Options.Instance.CellRatio, true);
-
-        //Board.Instance().ResetBoard();
+        Board.Instance()._gameData = null;
+        Board.Instance()._mono.StartCoroutine(Board.Instance().ResizeBoard(Board.Instance().CellRatio, true));
 
         GameObject.FindGameObjectWithTag("SmileyButton").GetComponent<Image>().sprite = PrefabHelper.Instance.HappySmiley;
     }

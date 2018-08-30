@@ -44,10 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8906195fc12859408133d6299a01690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ground: {fileID: 1252285634115052, guid: 7e180263d2ed97f4eaa270ad997b4164, type: 2}
-  Walls: {fileID: 1679085727365056, guid: 7d13bdccfd1aee94c95061c248058284, type: 2}
-  Player: {fileID: 1034766571006100, guid: 48101ce39e412f44ca725466e4d313c5, type: 2}
-  PickUps: {fileID: 1571110532516200, guid: 31dabd9ace42241458a86646f8c40d54, type: 2}
 --- !u!1101 &1101116598136411570
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

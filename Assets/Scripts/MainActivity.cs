@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-// app secret bbf46034-a8e1-4059-9552-33247433c855
 
 public class MainActivity : MonoBehaviour
 {
@@ -39,6 +38,7 @@ public class MainActivity : MonoBehaviour
     public AudioSource BackgroundGameSound;
 
     internal Board _board;
+    private GameData _gameData;
 
     private ScreenOrientation _lastScreenOrientation;
     private int _lastScreenWidth;
@@ -69,7 +69,7 @@ public class MainActivity : MonoBehaviour
             LoadingPanel.GetComponent<Animator>().Play("LoadingPanelOpen");
             BackgroundBlackPanel.GetComponent<Animator>().Play("BackgroundBlackPanelActivate");
 
-            _board = Board.Instance(BoardPanel, this);
+            _board = Board.Instance(BoardPanel, _gameData, this);
         }
         
 
@@ -106,26 +106,26 @@ public class MainActivity : MonoBehaviour
         Canvas.ForceUpdateCanvases();
     }
 
-    public void RotateBoard()
-    {
-        _board.ResizeBoard(Options.Instance.CellRatio, false);
-    }
+    //public void RotateBoard()
+    //{
+    //    _board.ResizeBoard(Options.Instance.CellRatio, false);
+    //}
 
     float pauseTimer = 0;
 
-    private void OnRectTransformDimensionsChange()
-    {
-        UnityEngine.Debug.Log("CHANGED!");
+    //private void OnRectTransformDimensionsChange()
+    //{
+    //    UnityEngine.Debug.Log("CHANGED!");
 
-        if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft || Input.deviceOrientation == DeviceOrientation.LandscapeRight)
-        {
-            UnityEngine.Debug.Log("we landscape now.");
-        }
-        else if (Input.deviceOrientation == DeviceOrientation.Portrait)
-        {
-            UnityEngine.Debug.Log("we portrait now");
-        }
-    }
+    //    if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft || Input.deviceOrientation == DeviceOrientation.LandscapeRight)
+    //    {
+    //        UnityEngine.Debug.Log("we landscape now.");
+    //    }
+    //    else if (Input.deviceOrientation == DeviceOrientation.Portrait)
+    //    {
+    //        UnityEngine.Debug.Log("we portrait now");
+    //    }
+    //}
 
     //private void OnLevelWasLoaded(int level)
     //{
@@ -154,11 +154,11 @@ public class MainActivity : MonoBehaviour
 
         if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft || Input.deviceOrientation == DeviceOrientation.LandscapeRight)
         {
-            UnityEngine.Debug.Log("we landscape now.");
+            UnityEngine.Debug.Log("landscape now.");
         }
         else if (Input.deviceOrientation == DeviceOrientation.Portrait)
         {
-            UnityEngine.Debug.Log("we portrait now");
+            UnityEngine.Debug.Log("portrait now");
         }
 
         if (_board != null)
@@ -226,15 +226,7 @@ public class MainActivity : MonoBehaviour
                 SmileyPanel.GetComponent<Image>().sprite = SadSmiley;
 
                 GameObject.FindGameObjectWithTag("NewBoardPanel").GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-                //for (int row = 0; row < _board.Height; row++)
-                //{
-                //    for (int col = 0; col < _board.Width; col++)
-                //    {
-                //        _board.Cells[row, col]._cell.GetComponent<Image>().raycastTarget = false;
-                //    }
-                //}
-
+                
                 _board.gameEnded = true;
                 return;
             }
@@ -275,10 +267,47 @@ public class MainActivity : MonoBehaviour
         //UnityEngine.Debug.Log("Save: " + jsonSaveData);
 
         PlayerPrefs.SetString("Options", jsonSaveData);
+
+        // Save the game state if not finished
+        if (!_board.boardExploded)
+        {
+            FileStream file;
+
+            string saveFilePath = Application.persistentDataPath + "/minesweeper.dat";
+
+            if (File.Exists(saveFilePath)) file = File.OpenWrite(saveFilePath);
+            else file = File.Create(saveFilePath);
+
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(file, _board._gameData);
+            file.Close();
+        }
     }
 
     public void LoadOptions()
     {
+        try
+        {
+            FileStream file;
+            string saveFilePath = Application.persistentDataPath + "/minesweeper.dat";
+            if (File.Exists(saveFilePath))
+            {
+                file = File.OpenRead(saveFilePath);
+
+                BinaryFormatter bf = new BinaryFormatter();
+                _gameData = (GameData)bf.Deserialize(file);
+                file.Close();
+            }
+            else
+            {
+                UnityEngine.Debug.LogError("File not found");
+            }
+        }
+        catch (System.Exception e)
+        {
+            UnityEngine.Debug.LogError(e.ToString());
+        }
+
         string jsonSaveData = PlayerPrefs.GetString("Options");
         //UnityEngine.Debug.Log("Load: " + jsonSaveData);
 

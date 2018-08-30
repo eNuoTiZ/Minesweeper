@@ -29,10 +29,13 @@ public class Board : ScriptableObject
     internal bool gameStarted;
     internal bool gamePaused;
     internal float startTime;
+    internal static bool firstInit;
 
     private static Board _board;
     internal GameObject _boardPanel;
-    private MonoBehaviour _mono;
+    internal MonoBehaviour _mono;
+
+    internal GameData _gameData;
 
     internal float CellRatio { get; set; }
 
@@ -51,19 +54,21 @@ public class Board : ScriptableObject
         return _board;
     }
 
-    public static Board Instance(GameObject boardPanel, MonoBehaviour mono)
+    public static Board Instance(GameObject boardPanel, GameData gameData, MonoBehaviour mono)
     {
         if (_board == null)
         {
-            _board = new Board(boardPanel, mono);
+            firstInit = true;
+            _board = new Board(boardPanel, gameData, mono);
         }
         return _board;
     }
 
-    private Board(GameObject boardPanel, MonoBehaviour mono)
+    private Board(GameObject boardPanel, GameData gameData, MonoBehaviour mono)
     {
         _boardPanel = boardPanel;
         _mono = mono;
+        _gameData = gameData;
         CellRatio = Options.Instance.CellRatio;
 
         loadingSlider = GameObject.FindGameObjectWithTag("LoadingSlider").GetComponent<Slider>();
@@ -113,7 +118,7 @@ public class Board : ScriptableObject
 
     public IEnumerator ResizeBoard(float newCellRatio, bool reset = true)
     {
-        Debug.Log("RESIZEBOARD!");
+        //Debug.Log("RESIZEBOARD!");
         loadingSlider.value = 0;
 
         initializing = true;
@@ -129,8 +134,8 @@ public class Board : ScriptableObject
         float startBoardPanelWidth = _boardPanel.GetComponent<RectTransform>().rect.width;
         float cellHeight = PrefabHelper.Instance.CellPrefab.GetComponent<RectTransform>().rect.height * CellRatio;
         float cellWidth = PrefabHelper.Instance.CellPrefab.GetComponent<RectTransform>().rect.width * CellRatio;
-        Debug.Log("Height: " + startBoardPanelHeight + " - Width: " + startBoardPanelWidth);
-        Debug.Log("Cell dimension: " + cellHeight);
+        //Debug.Log("Height: " + startBoardPanelHeight + " - Width: " + startBoardPanelWidth);
+        //Debug.Log("Cell dimension: " + cellHeight);
 
         float widthOffset = 0;
 
@@ -157,7 +162,7 @@ public class Board : ScriptableObject
                 DestroyAllCells();
             }
             sw.Stop();
-            Debug.Log("DestroyAllCells() took " + sw.Elapsed);
+            //Debug.Log("DestroyAllCells() took " + sw.Elapsed);
 
             Width = (int)Mathf.Floor(startBoardPanelWidth / cellWidth);
             Height = (int)Mathf.Floor(startBoardPanelHeight / cellHeight);
@@ -166,7 +171,7 @@ public class Board : ScriptableObject
             {
                 widthOffset = (startBoardPanelWidth - (Width * cellWidth)) / 2;
 
-                Debug.Log("Nb width: " + Width + " - Nb height " + Height);
+                //Debug.Log("Nb width: " + Width + " - Nb height " + Height);
 
                 Cells = new Cell[Height, Width];
             }
@@ -174,22 +179,22 @@ public class Board : ScriptableObject
             Level = Options.Instance.SelectedLevel;
             BombCount = GetBombNumber();
         }
-        else
-        {
-            Cell[,] tempCellArray = RotateBoardClockwise(_board.Cells);
-            int oldWidth = Width;
-            Width = Height;
-            Height = oldWidth;
+        //else
+        //{
+        //    Cell[,] tempCellArray = RotateBoardClockwise(_board.Cells);
+        //    int oldWidth = Width;
+        //    Width = Height;
+        //    Height = oldWidth;
 
-            widthOffset = (startBoardPanelHeight - (Width * cellWidth)) / 2;
+        //    widthOffset = (startBoardPanelHeight - (Width * cellWidth)) / 2;
 
-            //DestroyAllCells();
+        //    //DestroyAllCells();
 
-            _board.Cells = new Cell[Height, Width];
-            Array.Copy(tempCellArray, _board.Cells, tempCellArray.Length);
-        }
+        //    _board.Cells = new Cell[Height, Width];
+        //    Array.Copy(tempCellArray, _board.Cells, tempCellArray.Length);
+        //}
 
-        Debug.Log("Offset: " + widthOffset);
+        //Debug.Log("Offset: " + widthOffset);
 
         sw = new System.Diagnostics.Stopwatch();
         sw.Start();
@@ -223,13 +228,12 @@ public class Board : ScriptableObject
                         cell.row = row;
                         cell.col = col;
 
-                        Cells[row, col] = new Cell(newCell, Width, row, col)
-                        {
-                            NbBomb = 0,
-                            Content = Cell.CONTENT.EMPTY,
-                            State = Cell.STATE.COVERED,
-                            Selected = false
-                        };
+                        Cells[row, col] = new Cell(newCell, Width, row, col);
+                    }
+                    
+                    if (firstInit && _gameData != null)
+                    {
+                        InitializeCellFromSaveGame(Cells[row, col], row, col);
                     }
                     else
                     {
@@ -244,9 +248,7 @@ public class Board : ScriptableObject
                 }
                 else
                 {
-                    //_board.Cells[row, col]._cell.transform.localScale = new Vector3(CellRatio, CellRatio, CellRatio);
                     _board.Cells[row, col]._cell.transform.position = new Vector3((cellWidth * col) + widthOffset, -cellHeight * row, _board.Cells[row, col]._cell.transform.position.z);
-                    //_board.Cells[row, col]._cell.transform.SetParent(_boardPanel.transform, false);
                 }
 
                 loadingSlider.value = loadingCounter;
@@ -256,24 +258,28 @@ public class Board : ScriptableObject
             yield return null;
         }
         sw.Stop();
-        Debug.Log("Init board " + sw.Elapsed);
+        //Debug.Log("Init board " + sw.Elapsed);
 
         if (reset)
         {
-            sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-            InitializeBoardBombs();
-            sw.Stop();
-            Debug.Log("InitializeBoardBombs() took " + sw.Elapsed);
-
-            //if (GameObject.FindGameObjectWithTag("BackgroundBlackPanel").GetComponent<CanvasGroup>().alpha > 0)
+            if (_gameData == null)
             {
-                GameObject.FindGameObjectWithTag("LoadingPanel").GetComponent<Animator>().Play("LoadingPanelClose");
-                GameObject.FindGameObjectWithTag("BackgroundBlackPanel").GetComponent<Animator>().Play("BackgroundBlackPanelDisable");
+                sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
+
+                _gameData = new GameData(Width, Height);
+                InitializeBoardBombs();
+
+                sw.Stop();
+                //Debug.Log("InitializeBoardBombs() took " + sw.Elapsed);
             }
+
+            GameObject.FindGameObjectWithTag("LoadingPanel").GetComponent<Animator>().Play("LoadingPanelClose");
+            GameObject.FindGameObjectWithTag("BackgroundBlackPanel").GetComponent<Animator>().Play("BackgroundBlackPanelDisable");
         }
 
         initializing = false;
+        firstInit = false;
 
         if (gamePaused)
         {
@@ -348,6 +354,45 @@ public class Board : ScriptableObject
         GameObject.FindGameObjectWithTag("NewBoardPanel").GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
+    public void InitializeCellFromSaveGame(Cell cell, int row, int col)
+    {
+        if (_gameData.bombNumberCells[row, col] == -1)
+        {
+            cell.Content = Cell.CONTENT.BOMB;
+        }
+        else
+        {
+            cell.NbBomb = _gameData.bombNumberCells[row, col];
+
+            if (_gameData.bombNumberCells[row, col] == 0)
+            {
+                cell.Content = Cell.CONTENT.EMPTY;
+            }
+            else
+            {
+                cell.Content = Cell.CONTENT.DANGER_ZONE;
+            }
+        }
+
+        switch (_gameData.stateCells[row, col])
+        {
+            case 1:
+                cell.State = Cell.STATE.COVERED;
+                break;
+            case 2:
+                cell.State = Cell.STATE.DISCOVERED;
+                //Debug.Log(string.Format("Cell {0}-{1} discovered!", row, col));
+                break;
+            case 3:
+                cell.State = Cell.STATE.FLAGGED;
+                break;
+            default:
+                break;
+        }
+
+        cell.Selected = false;
+    }
+
     public void InitializeBoardBombs()
     {
         int bombCountLeft = BombCount;
@@ -375,12 +420,15 @@ public class Board : ScriptableObject
                 {
                     if (Cells[row, col].Content == Cell.CONTENT.BOMB)
                     {
+                        _gameData.bombNumberCells[row, col] = -1;
                         continue;
                     }
 
                     //Debug.Log("Row: " + row + " - Col: " + col);
                     Cells[row, col].NbBomb++;
                     Cells[row, col].Content = Cell.CONTENT.DANGER_ZONE;
+
+                    _gameData.bombNumberCells[row, col] = Cells[row, col].NbBomb;
                 }
             }
 
