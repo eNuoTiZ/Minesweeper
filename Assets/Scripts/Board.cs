@@ -177,7 +177,7 @@ public class Board : ScriptableObject
             }
 
             Level = Options.Instance.SelectedLevel;
-            BombCount = GetBombNumber();
+            BombCount = 3;// GetBombNumber();
         }
         //else
         //{
@@ -231,7 +231,7 @@ public class Board : ScriptableObject
                         Cells[row, col] = new Cell(newCell, Width, row, col);
                     }
                     
-                    if (firstInit && _gameData != null)
+                    if (firstInit && _gameData != null && !cellRatioChanged)
                     {
                         InitializeCellFromSaveGame(Cells[row, col], row, col);
                     }
@@ -262,7 +262,7 @@ public class Board : ScriptableObject
 
         if (reset)
         {
-            if (_gameData == null)
+            if (_gameData == null || cellRatioChanged)
             {
                 sw = new System.Diagnostics.Stopwatch();
                 sw.Start();
@@ -385,6 +385,11 @@ public class Board : ScriptableObject
                 break;
             case 3:
                 cell.State = Cell.STATE.FLAGGED;
+                if (cell.Content == Cell.CONTENT.BOMB)
+                {
+                    nbGoodFlags++;
+                }
+                nbFlags++;
                 break;
             default:
                 break;

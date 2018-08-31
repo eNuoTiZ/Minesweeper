@@ -196,7 +196,10 @@ public class Options
                 }
 
                 BeginnerRankings.Sort(SortByScore);
-                BeginnerRankings.RemoveRange(0, MaxRankingsNumber);
+                if (BeginnerRankings.Count > MaxRankingsNumber)
+                {
+                    BeginnerRankings.RemoveRange(0, MaxRankingsNumber);
+                }
 
                 break;
             case Level.Intermadiate:
@@ -212,7 +215,10 @@ public class Options
                 }
 
                 IntermediateRankings.Sort(SortByScore);
-                IntermediateRankings.RemoveRange(0, MaxRankingsNumber);
+                if (IntermediateRankings.Count > MaxRankingsNumber)
+                {
+                    IntermediateRankings.RemoveRange(0, MaxRankingsNumber);
+                }
 
                 break;
             case Level.Expert:
@@ -228,7 +234,10 @@ public class Options
                 }
 
                 ExpertRankings.Sort(SortByScore);
-                ExpertRankings.RemoveRange(0, MaxRankingsNumber);
+                if (ExpertRankings.Count > MaxRankingsNumber)
+                {
+                    ExpertRankings.RemoveRange(0, MaxRankingsNumber);
+                }
 
                 break;
             case Level.Custom:
