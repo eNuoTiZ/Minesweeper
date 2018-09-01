@@ -177,7 +177,7 @@ public class Board : ScriptableObject
             }
 
             Level = Options.Instance.SelectedLevel;
-            BombCount = 3;// GetBombNumber();
+            BombCount = GetBombNumber();
         }
         //else
         //{
