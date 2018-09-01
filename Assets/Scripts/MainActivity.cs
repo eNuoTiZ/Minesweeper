@@ -43,7 +43,7 @@ public class MainActivity : MonoBehaviour
     private ScreenOrientation _lastScreenOrientation;
     private int _lastScreenWidth;
     private int _lastScreenHeight;
-
+    
     private static MainActivity _Instance;
 
     public static MainActivity Instance
@@ -140,11 +140,6 @@ public class MainActivity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Board.Instance().initializing)
-        //{
-        //    return;
-        //}
-
         if (_lastScreenWidth != Screen.width)
         {
             UnityEngine.Debug.Log("Changed!!!");
@@ -185,11 +180,11 @@ public class MainActivity : MonoBehaviour
             {
                 needBoardUpdate = false;
                 _board.initializing = true;
-
-                UnityEngine.Debug.Log("Enabling BackgroundBlackPanel");
+                
                 BackgroundBlackPanel.GetComponent<Animator>().Play("BackgroundBlackPanelActivate");
                 LoadingPanel.GetComponent<Animator>().Play("LoadingPanelOpen");
-                
+
+                UnityEngine.Debug.Log("Updating the board!");
                 StartCoroutine(Board.Instance().ResizeBoard(Options.Instance.CellRatio));
 
                 return;
@@ -198,11 +193,12 @@ public class MainActivity : MonoBehaviour
             if (gameWasPaused)
             {
                 gameWasPaused = false;
+                pauseTimer = 0;
 
                 if (_board.CellRatio != Options.Instance.CellRatio || _board.Level != Options.Instance.SelectedLevel)
                 {
                     needBoardUpdate = true;
-
+                    UnityEngine.Debug.Log("needBoardUpdate!");
                     return;
                 }
             }
@@ -246,11 +242,11 @@ public class MainActivity : MonoBehaviour
                             _board.startTime = _board.startTime + pauseTimer;
                             pauseTimer = 0;
                         }
-
-                        float t = Time.time - _board.startTime;
-                        TimerText.text = t.ToString("000");
                     }
                 }
+
+                float t = Time.time - _board.startTime;
+                TimerText.text = t.ToString("000");
             }
             else
             {

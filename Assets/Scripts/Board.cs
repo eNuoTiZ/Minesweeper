@@ -127,6 +127,7 @@ public class Board : ScriptableObject
         int currentHeight = Height;
 
         bool cellRatioChanged = CellRatio != newCellRatio;
+        bool levelChanged = Level != Options.Instance.SelectedLevel;
 
         CellRatio = newCellRatio;
 
@@ -262,7 +263,7 @@ public class Board : ScriptableObject
 
         if (reset)
         {
-            if (_gameData == null || cellRatioChanged)
+            if (_gameData == null || cellRatioChanged || levelChanged)
             {
                 sw = new System.Diagnostics.Stopwatch();
                 sw.Start();
