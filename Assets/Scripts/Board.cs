@@ -70,6 +70,7 @@ public class Board : ScriptableObject
         _mono = mono;
         _gameData = gameData;
         CellRatio = Options.Instance.CellRatio;
+        Level = Options.Instance.SelectedLevel;
 
         loadingSlider = GameObject.FindGameObjectWithTag("LoadingSlider").GetComponent<Slider>();
 

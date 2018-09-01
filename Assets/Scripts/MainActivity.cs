@@ -265,7 +265,7 @@ public class MainActivity : MonoBehaviour
         PlayerPrefs.SetString("Options", jsonSaveData);
 
         // Save the game state if not finished
-        if (!_board.boardExploded)
+        if (!_board.boardExploded && !_board.gameEnded)
         {
             FileStream file;
 
