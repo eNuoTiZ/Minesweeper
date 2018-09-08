@@ -44,9 +44,9 @@ public static class Vibration
         }
         else
         {
-#if UNITY_IPHONE
+//#if UNITY_IPHONE
             Handheld.Vibrate();
-#endif
+//#endif
         }
     }
 
@@ -77,11 +77,11 @@ public static class Vibration
     {
         Debug.Log("Device model: " + SystemInfo.deviceModel);
 
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || SystemInfo.deviceModel.Contains("samsung"))
         {
             return true;
         }
-
+        
         return false;
 
 //#if UNITY_ANDROID && !UNITY_EDITOR

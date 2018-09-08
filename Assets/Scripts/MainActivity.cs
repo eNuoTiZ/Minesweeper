@@ -43,6 +43,8 @@ public class MainActivity : MonoBehaviour
     private ScreenOrientation _lastScreenOrientation;
     private int _lastScreenWidth;
     private int _lastScreenHeight;
+
+    public Text DebugText;
     
     private static MainActivity _Instance;
 
@@ -58,9 +60,7 @@ public class MainActivity : MonoBehaviour
             return _Instance;
         }
     }
-
-    //Options _options;
-
+    
     // Use this for initialization
     void Start()
     {
@@ -140,6 +140,8 @@ public class MainActivity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //DebugText.text = SystemInfo.deviceModel;
+
         if (_lastScreenWidth != Screen.width)
         {
             UnityEngine.Debug.Log("Changed!!!");
