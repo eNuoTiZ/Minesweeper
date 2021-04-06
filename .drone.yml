@@ -9,5 +9,6 @@ platform:
 steps:
 - name: build
   commands:
-  - echo Hello world!
-  - dir
+  - echo Starting the build 
+  - .\Build\build.sh
+  - echo Build ended 
