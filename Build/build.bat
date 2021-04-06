@@ -3,13 +3,13 @@ SETLOCAL EnableDelayedExpansion
 
 echo Start building...
 
-if not exist .\output (
-  mkdir .\output
+if not exist %cd%\output\ (
+  echo Creating output directory
+  mkdir %cd%\output\
 )
 
-dir .
 
-"C:\Program Files\Unity\Hub\Editor\2019.4.18f1\Editor\Unity.exe" -quit -batchmode -projectPath . -executeMethod BuildMyGame.BuildAndroid -logFile .\output\build.log .\output\Minesweeper.apk
+"C:\Program Files\Unity\Hub\Editor\2019.4.18f1\Editor\Unity.exe" -quit -batchmode -projectPath %cd%\ -executeMethod BuildMyGame.BuildAndroid -logFile %cd%\output\build.log %cd%\output\Minesweeper.apk
 
 if %errorlevel% NEQ 0 (
   set /A exitCode=%errorlevel%
@@ -17,11 +17,15 @@ if %errorlevel% NEQ 0 (
   echo Build failed with exit code %exitCode%
 )
 
-if exist D:\GitHub\Minesweeper\output (
-  rmdir /S /Q D:\GitHub\Minesweeper\output
+if exist D:\output (
+  rmdir /S /Q D:\output
 )
 
-copy .\output\*.* D:\GitHub\Minesweeper\output
+mkdir D:\output
+
+copy %cd%\output\*.* D:\output
+::GitHub\Minesweeper
+
 
 echo Build ended (exit code %exitCode%)...
 
