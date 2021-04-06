@@ -4,4 +4,6 @@ echo Start building...
 
 type .\Logs\Builds\build.log
 
+copy .\Minesweeper.apk D:\GitHub\Minesweeper\Minesweeper.apk
+
 echo Build ended...
