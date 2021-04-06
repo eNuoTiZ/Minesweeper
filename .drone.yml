@@ -10,5 +10,5 @@ steps:
 - name: build
   commands:
   - echo Starting the build 
-  - .\Build\build.sh
+  - .\Build\build.bat
   - echo Build ended 
