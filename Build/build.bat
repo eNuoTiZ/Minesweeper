@@ -1,5 +1,5 @@
 echo Start building...
 
-"C:\Program Files\Unity\Hub\Editor\2019.4.18f1\Editor\Unity.exe" -quit -batchmode -projectPath . -executeMethod BuildMyGame.BuildAndroid -logFile ./Logs/Builds/build.log ./Minesweeper.apk
-
+"C:\Program Files\Unity\Hub\Editor\2019.4.18f1\Editor\Unity.exe" -quit -batchmode -projectPath . -logFile ./Logs/Builds/build.log ./Minesweeper.apk
+# -executeMethod BuildMyGame.BuildAndroid
 echo Build ended...
