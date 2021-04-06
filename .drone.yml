@@ -10,3 +10,4 @@ steps:
 - name: build
   commands:
   - echo Hello world!
+  - dir
