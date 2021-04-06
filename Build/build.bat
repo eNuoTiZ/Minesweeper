@@ -9,7 +9,8 @@ if not exist %cd%\output\ (
 )
 
 
-"C:\Program Files\Unity\Hub\Editor\2019.4.18f1\Editor\Unity.exe" -quit -batchmode -projectPath %cd%\ -executeMethod BuildMyGame.BuildAndroid -logFile %cd%\output\build.log %cd%\output\Minesweeper.apk
+"C:\Program Files\Unity\Hub\Editor\2019.4.18f1\Editor\Unity.exe" -quit -batchmode -projectPath %cd%\ -logFile %cd%\output\build.log %cd%\output\Minesweeper.apk
+::-executeMethod BuildMyGame.BuildAndroid
 
 if %errorlevel% NEQ 0 (
   set /A exitCode=%errorlevel%
