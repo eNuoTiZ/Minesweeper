@@ -7,7 +7,7 @@ if not exist .\output (
   mkdir .\output
 )
 
-::set /A exitCode=0
+dir .
 
 "C:\Program Files\Unity\Hub\Editor\2019.4.18f1\Editor\Unity.exe" -quit -batchmode -projectPath . -executeMethod BuildMyGame.BuildAndroid -logFile .\output\build.log .\output\Minesweeper.apk
 
