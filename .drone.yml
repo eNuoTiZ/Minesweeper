@@ -8,5 +8,6 @@ platform:
 
 steps:
 - name: build
+  User: olivierguitton
   commands:
   - ./Build/build.sh

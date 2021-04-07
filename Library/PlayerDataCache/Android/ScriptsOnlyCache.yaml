@@ -81,81 +81,81 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11236}
+      Script: {instanceID: 13846}
     - Class: 114
-      Script: {instanceID: 11238}
+      Script: {instanceID: 13944}
     - Class: 114
-      Script: {instanceID: 11240}
+      Script: {instanceID: 13974}
     - Class: 114
-      Script: {instanceID: 11242}
+      Script: {instanceID: 13978}
     - Class: 114
-      Script: {instanceID: 11244}
+      Script: {instanceID: 14014}
     - Class: 114
-      Script: {instanceID: 11246}
+      Script: {instanceID: 14016}
     - Class: 114
-      Script: {instanceID: 11248}
+      Script: {instanceID: 14054}
     - Class: 114
-      Script: {instanceID: 11250}
+      Script: {instanceID: 14070}
     - Class: 114
-      Script: {instanceID: 11252}
+      Script: {instanceID: 14154}
     - Class: 114
-      Script: {instanceID: 11254}
+      Script: {instanceID: 14170}
     - Class: 114
-      Script: {instanceID: 11256}
+      Script: {instanceID: 14246}
     - Class: 114
-      Script: {instanceID: 11376}
+      Script: {instanceID: 14324}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 14326}
     - Class: 114
-      Script: {instanceID: 11410}
+      Script: {instanceID: 14366}
     - Class: 114
-      Script: {instanceID: 11446}
+      Script: {instanceID: 14392}
     - Class: 114
-      Script: {instanceID: 11496}
+      Script: {instanceID: 14428}
     - Class: 114
-      Script: {instanceID: 11596}
+      Script: {instanceID: 14450}
     - Class: 114
-      Script: {instanceID: 11670}
+      Script: {instanceID: 14464}
     - Class: 114
-      Script: {instanceID: 11748}
+      Script: {instanceID: 14550}
     - Class: 114
-      Script: {instanceID: 11750}
+      Script: {instanceID: 14656}
     - Class: 114
-      Script: {instanceID: 11790}
+      Script: {instanceID: 14676}
     - Class: 114
-      Script: {instanceID: 11816}
+      Script: {instanceID: 14808}
     - Class: 114
-      Script: {instanceID: 11852}
+      Script: {instanceID: 14826}
     - Class: 114
-      Script: {instanceID: 11874}
+      Script: {instanceID: 14860}
     - Class: 114
-      Script: {instanceID: 11888}
+      Script: {instanceID: 14950}
     - Class: 114
-      Script: {instanceID: 11978}
+      Script: {instanceID: 14956}
     - Class: 114
-      Script: {instanceID: 12084}
+      Script: {instanceID: 15048}
     - Class: 114
-      Script: {instanceID: 12104}
+      Script: {instanceID: 15076}
     - Class: 114
-      Script: {instanceID: 12236}
+      Script: {instanceID: 15224}
     - Class: 114
-      Script: {instanceID: 12254}
+      Script: {instanceID: 15338}
     - Class: 114
-      Script: {instanceID: 12376}
+      Script: {instanceID: 15342}
     - Class: 114
-      Script: {instanceID: 12480}
+      Script: {instanceID: 15390}
     - Class: 114
-      Script: {instanceID: 12658}
+      Script: {instanceID: 15540}
     - Class: 114
-      Script: {instanceID: 12780}
+      Script: {instanceID: 15664}
     - Class: 114
-      Script: {instanceID: 12828}
+      Script: {instanceID: 15706}
     - Class: 114
-      Script: {instanceID: 12982}
+      Script: {instanceID: 15720}
     - Class: 114
-      Script: {instanceID: 13146}
+      Script: {instanceID: 15736}
     - Class: 114
-      Script: {instanceID: 13188}
+      Script: {instanceID: 15752}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -189,76 +189,10 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: aa88ae22474df55295327e4ee99e5a24
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Toggle
-  - hash:
-      serializedVersion: 2
-      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
-  - hash:
-      serializedVersion: 2
-      Hash: 5f1752ed2092162f016c19510c28a8b9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: HorizontalLayoutGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: VerticalLayoutGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ContentSizeFitter
-  - hash:
-      serializedVersion: 2
-      Hash: aeb62f729c52c814dec86c47dcac1471
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
-  - hash:
-      serializedVersion: 2
-      Hash: 7072231382eb3c4871b3dd75ad0227e1
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Slider
-  - hash:
-      serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
-  - hash:
-      serializedVersion: 2
-      Hash: a63fc1a3b035e5a0b5839cd7f7b3086e
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: EventTrigger
-  - hash:
-      serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: PositionAsUV1
   - hash:
       serializedVersion: 2
       Hash: c42672c997f8be6b1aa86a927ebea785
@@ -333,16 +267,34 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
+      Hash: aeb62f729c52c814dec86c47dcac1471
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
+  - hash:
+      serializedVersion: 2
       Hash: 499fd23433e68e265d153aa6b95d0047
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Scrollbar
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: PositionAsUV1
+  - hash:
+      serializedVersion: 2
       Hash: abf1930d8126d0b2e00e9449129a0190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -367,6 +319,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GridLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ContentSizeFitter
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -585,6 +543,12 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
+      Hash: 5f1752ed2092162f016c19510c28a8b9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
       Hash: f84d945e5e1ca985698660fc26e9657f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -595,6 +559,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Rankings
+  - hash:
+      serializedVersion: 2
+      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -619,6 +589,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: 344a8c2e106a0a4e098e91a52e0af063
@@ -679,6 +655,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AudioTrack
+  - hash:
+      serializedVersion: 2
+      Hash: ae83e830e7a90c0aff918c4c2e520825
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -771,6 +753,12 @@ ScriptsOnlyBuild:
     className: Outline
   - hash:
       serializedVersion: 2
+      Hash: a63fc1a3b035e5a0b5839cd7f7b3086e
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: EventTrigger
+  - hash:
+      serializedVersion: 2
       Hash: 5dea360fb0b147724ac344e6f399c2f3
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -813,10 +801,22 @@ ScriptsOnlyBuild:
     className: StandaloneInputModule
   - hash:
       serializedVersion: 2
+      Hash: aa88ae22474df55295327e4ee99e5a24
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
+  - hash:
+      serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalEmitter
+  - hash:
+      serializedVersion: 2
+      Hash: 7072231382eb3c4871b3dd75ad0227e1
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Slider
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -844,4 +844,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene_Loading.unity
-  playerPath: d:/output/Minesweeper.apk
+  playerPath: /Users/olivierguitton/Documents/GitHub/Minesweeper/./Minesweeper.apk

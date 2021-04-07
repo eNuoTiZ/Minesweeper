@@ -19,6 +19,13 @@ public class BuildMyGame
         Build(BuildTarget.StandaloneWindows);
     }
 
+    [MenuItem("File/AutoBuilder/IOS")]
+    public static void BuildIos()
+    {
+        Debug.Log("wawa");
+        Build(BuildTarget.iOS);
+    }
+
     public static void Build(BuildTarget target)
     {
         string[] scenes = { "Assets/Scenes/MainScene_Loading.unity" };
@@ -28,6 +35,7 @@ public class BuildMyGame
         {
             outputPath = "../../Build/" + target.ToString();
         }
+        Debug.Log($"Output path: {outputPath}");
         var report = BuildPipeline.BuildPlayer(scenes, outputPath, target, BuildOptions.None);
 
         Debug.Log(report.summary.totalWarnings + report.summary.totalErrors);
