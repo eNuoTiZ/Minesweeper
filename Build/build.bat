@@ -19,13 +19,13 @@ if %errorlevel% NEQ 0 (
   echo Build failed with exit code %exitCode%
 )
 
-if exist D:\output (
-  rmdir /S /Q D:\output
+if exist D:\output\ (
+  rmdir /S /Q D:\output\
 )
 
-mkdir D:\output
+mkdir D:\output\
 
-copy %cd%\output\*.* D:\output
+copy %cd%\output\*.* D:\output\
 ::GitHub\Minesweeper
 
 
