@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "Assembly-CSharp.csproj", "{B001919C-18A3-D42C-2F2B-CCCDB9C9BB1A}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{B001919C-18A3-D42C-2F2B-CCCDB9C9BB1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "Assembly-CSharp-Editor.csproj", "{4B6429D8-05C0-5567-C754-2BBDA5DAA651}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{4B6429D8-05C0-5567-C754-2BBDA5DAA651}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
