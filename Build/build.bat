@@ -29,7 +29,7 @@ if %errorlevel% NEQ 0 (
 echo Content of '%cd%\output'
 dir %cd%\output
 
-robocopy %cd%\output\ d:\output\ /MIR
+robocopy %cd%\output\ d:\output\
 
 echo Build ended (exit code %exitCode%)...
 

@@ -844,4 +844,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene_Loading.unity
-  playerPath: D:/GitHub/Minesweeper/output/Minesweeper.apk
+  playerPath: d:/output/Minesweeper.apk

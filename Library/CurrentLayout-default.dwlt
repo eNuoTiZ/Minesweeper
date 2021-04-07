@@ -396,7 +396,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e0faffff
+      m_ExpandedIDs: 4cf0ffff70f0ffff88f0ffff96f0ffff0af1ffff28f1ffff40f1fffff6f1ffff68fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -613,7 +613,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f2680000
     m_LastClickedID: 26866
-    m_ExpandedIDs: 000000000e4a0000104a0000
+    m_ExpandedIDs: 00000000284100002a410000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -641,7 +641,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000e4a0000104a0000
+    m_ExpandedIDs: 00000000284100002a410000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
