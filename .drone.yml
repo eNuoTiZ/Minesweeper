@@ -3,10 +3,10 @@ type: exec
 name: default
 
 platform:
-  os: windows
+  os: linux
   arch: amd64
 
 steps:
 - name: build
   commands:
-  - ./Build/build.bat
+  - ./Build/build.sh
