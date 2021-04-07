@@ -26,6 +26,8 @@ if %errorlevel% NEQ 0 (
   echo Build failed with exit code %exitCode%
 )
 
+robocopy .\output\ d:\output\
+
 echo Build ended (exit code %exitCode%)...
 
 exit /b %exitCode%
