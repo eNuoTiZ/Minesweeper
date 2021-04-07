@@ -26,6 +26,9 @@ if %errorlevel% NEQ 0 (
   echo Build failed with exit code %exitCode%
 )
 
+echo Content of '%cd%\output'
+dir %cd%\output
+
 robocopy %cd%\output\ d:\output\ /MIR
 
 echo Build ended (exit code %exitCode%)...
