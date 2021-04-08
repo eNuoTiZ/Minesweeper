@@ -2,13 +2,11 @@
 
 echo Start building...
 
-outputDir=backup_dir=$(date +'%m%d%Y-%H%M%S')
-
-mkdir /Public/BuildLogs/$outputDir/
-
-'/Applications/Unity/Hub/Editor/2019.4.18f1/Unity.app/Contents/MacOS/Unity' -quit -batchmode -projectPath . -executeMethod BuildMyGame.BuildIos -logFile /Public/BuildLogs/$outputDir/build.log
+'/Applications/Unity/Hub/Editor/2019.4.18f1/Unity.app/Contents/MacOS/Unity' -quit -batchmode -projectPath . -executeMethod BuildMyGame.BuildIos -logFile ./Logs/Builds/build.log
 
 exitCode=$?
+
+cat ./Logs/Builds/build.log
 
 if [ $exitCode -eq 0 ]
 then
