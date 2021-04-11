@@ -34,3 +34,4 @@ robocopy %cd%\output\ d:\output\
 echo Build ended (exit code %exitCode%)...
 
 exit /b %exitCode%
+
